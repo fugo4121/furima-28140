@@ -1,6 +1,6 @@
 # テーブル設計
 
-## ユーザー テーブル
+## ユーザー(user) テーブル
 
 | Column             | Type        | Options                         |
 | ------             | ----------  | ------------------------------- |
@@ -13,7 +13,13 @@
 | family_name_kana   | string      | null: false                     |
 | birthday           | date        | null: false                     |
 
-## 商品 テーブル
+### Association
+
+- has_many :items
+- belongs_to :address
+- belongs_to :purchase
+
+## 商品(item) テーブル
 
 | Column             | Type        | Options                         |
 | ------             | ----------  | ------------------------------- |
@@ -28,7 +34,12 @@
 | price              | string      | null: false                     |
 | user               | references  | null: false, foreign_key: true  |
 
-## 住所 テーブル
+### Association
+
+- belongs_to :user
+- belongs_to :purchase
+
+## 住所(address) テーブル
 
 | Column             | Type        | Options                         |
 | ------             | ----------  | ------------------------------- |
@@ -40,9 +51,18 @@
 | phone_number       | integer     | null: false                     |
 | user               | references  | null: false, foreign_key: true  |
 
-## 購入 テーブル
+### Association
+
+- belongs_to :user
+
+## 購入(purchase) テーブル
 
 | Column             | Type        | Options                         |
 | ------             | ----------  | ------------------------------- |
 | user               | references  | null: false, foreign_key: true  |
 | item               | references  | null: false, foreign_key: true  |
+
+### Association
+
+- has_many :users
+- belongs_to :item
