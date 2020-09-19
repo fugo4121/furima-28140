@@ -1,0 +1,65 @@
+@startuml EntityRelationship
+
+package "MySQL" as target_system <<Database>> {
+
+    ' ユーザーテーブル
+    entity "ユーザー" as users {
+        + ユーザーID (user_id) [PK]
+        --
+        ニックネーム (nickname)
+        Eメール     (e_mail)
+        パスワード  (password)
+        名前       (first_name)
+        苗字       (family_name)
+        名前カナ    (first_name_kana)
+        苗字カナ    (family_name_kana)
+        生年月日    (birthday)
+       }
+
+    ' 商品テーブル
+    entity "商品" as items {
+        + 商品ID   (item_id) [PK]
+        --
+        商品画像   (image)
+        商品名     (name)
+        商品説明   (explain)
+        カテゴリー (category)
+        商品状態   (condition)
+        発送負担   (sending_cost)
+        発送地域   (sending_prefecture)
+        発送日数   (sending_days)
+        価格      (price)
+        ユーザーID (user_id)
+       }
+    ' 住所テーブル
+    entity "住所" as addresses {
+        + 住所ID     (address_id) [PK]
+        --
+        郵便番号      (postal_code)
+        都道府県      (prefecture)  
+        市区町村      (city)        
+        番地          (house_number)
+        建物名        (building_name)
+        電話番号      (phone_number)
+        ユーザーID    (user_id)
+       }
+
+    ' 購入テーブル
+    entity "購入" as purchases {
+        + 購入ID    (purchases_id) [PK]
+        --
+        + ユーザーID (user_id) [PK]
+        + 商品ID    (item_id) [PK]
+    }
+
+    ' ユーザー 1:多 商品
+    users ||..o{ items
+    ' 購入 1:多 ユーザー
+    purchases ||..o{ users
+    purchases ||..|| items
+    users ||..|| addresses
+}
+
+
+
+@enduml
