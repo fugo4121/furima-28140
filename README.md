@@ -16,20 +16,18 @@
 ### Association
 
 - has_many :items
-- belongs_to :address
-- belongs_to :purchase
+- has_many :purchases
 
 ## 商品(item) テーブル
 
 | Column             | Type        | Options                         |
 | ------             | ----------  | ------------------------------- |
-| image              | text        | null: false                     |
 | name               | string      | null: false                     |
 | explain            | text        | null: false                     |
-| category           | string      | null: false                     |
-| condition          | string      | null: false                     |
-| sending_cost       | string      | null: false                     |
-| sending_prefecture | string      | null: false                     |
+| category           | integer     | null: false                     |
+| condition          | integer     | null: false                     |
+| sending_cost       | integer     | null: false                     |
+| sending_prefecture | integer     | null: false                     |
 | sending_days       | integer     | null: false                     |
 | price              | string      | null: false                     |
 | user               | references  | null: false, foreign_key: true  |
@@ -43,17 +41,16 @@
 
 | Column             | Type        | Options                         |
 | ------             | ----------  | ------------------------------- |
-| postal_code        | integer     | null: false                     |
-| prefecture         | string      | null: false                     |
+| postal_code        | string      | null: false                     |
+| prefecture         | integer     | null: false                     |
 | city               | string      | null: false                     |
 | house_number       | string      | null: false                     |
-| building_name      | string      | null: false                     |
-| phone_number       | integer     | null: false                     |
-| user               | references  | null: false, foreign_key: true  |
+| building_name      | string      |                                 |
+| phone_number       | string      | null: false                     |
 
 ### Association
 
-- belongs_to :user
+- has_many :purchases
 
 ## 購入(purchase) テーブル
 
@@ -61,8 +58,10 @@
 | ------             | ----------  | ------------------------------- |
 | user               | references  | null: false, foreign_key: true  |
 | item               | references  | null: false, foreign_key: true  |
+| purchase           | references  | null: false, foreign_key: true  |
 
 ### Association
 
-- has_many :users
+- belongs_to :user
 - belongs_to :item
+- belongs_to :address
