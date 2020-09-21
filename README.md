@@ -20,37 +20,38 @@
 
 ## 商品(item) テーブル
 
-| Column             | Type        | Options                         |
-| ------             | ----------  | ------------------------------- |
-| name               | string      | null: false                     |
-| explain            | text        | null: false                     |
-| category           | integer     | null: false                     |
-| condition          | integer     | null: false                     |
-| sending_cost       | integer     | null: false                     |
-| sending_prefecture | integer     | null: false                     |
-| sending_days       | integer     | null: false                     |
-| price              | string      | null: false                     |
-| user               | references  | null: false, foreign_key: true  |
+| Column                | Type        | Options                         |
+| ------                | ----------  | ------------------------------- |
+| name                  | string      | null: false                     |
+| explain               | text        | null: false                     |
+| category_id           | integer     | null: false                     |
+| condition_id          | integer     | null: false                     |
+| sending_cost_id       | integer     | null: false                     |
+| sending_prefecture_id | integer     | null: false                     |
+| sending_days_id       | integer     | null: false                     |
+| price                 | integer     | null: false                     |
+| user                  | references  | null: false, foreign_key: true  |
 
 ### Association
 
 - belongs_to :user
-- belongs_to :purchase
+- has_many :purchases
 
 ## 住所(address) テーブル
 
-| Column             | Type        | Options                         |
-| ------             | ----------  | ------------------------------- |
-| postal_code        | string      | null: false                     |
-| prefecture         | integer     | null: false                     |
-| city               | string      | null: false                     |
-| house_number       | string      | null: false                     |
-| building_name      | string      |                                 |
-| phone_number       | string      | null: false                     |
+| Column                | Type        | Options                         |
+| ------                | ----------  | ------------------------------- |
+| postal_code           | string      | null: false                     |
+| prefecture_id         | integer     | null: false                     |
+| city                  | string      | null: false                     |
+| house_number          | string      | null: false                     |
+| building_name         | string      |                                 |
+| phone_number          | string      | null: false                     |
+| purchase              | references  | null: false, foreign_key: true  |
 
 ### Association
 
-- has_many :purchases
+- belongs_to :purchase
 
 ## 購入(purchase) テーブル
 
@@ -58,10 +59,9 @@
 | ------             | ----------  | ------------------------------- |
 | user               | references  | null: false, foreign_key: true  |
 | item               | references  | null: false, foreign_key: true  |
-| purchase           | references  | null: false, foreign_key: true  |
 
 ### Association
 
 - belongs_to :user
 - belongs_to :item
-- belongs_to :address
+- has_many :addresses

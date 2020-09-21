@@ -53,8 +53,8 @@ package "MySQL" as target_system <<Database>> {
 
     users ||..o{ items
     users ||..o{ purchases
-    items ||..|| purchases
-    addresses ||..o{ purchases
+    items ||..o{ purchases
+    addresses }o..|| purchases
 }
 
 
