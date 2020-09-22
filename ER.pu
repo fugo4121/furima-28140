@@ -40,21 +40,21 @@ package "MySQL" as target_system <<Database>> {
         番地          (house_number)
         建物名        (building_name)
         電話番号      (phone_number)
-        購入ID        (purchases_id) [PK]
+        購入ID        (orders_id) [PK]
        }
 
     ' 購入テーブル
-    entity "購入" as purchases {
-        + 購入ID    (purchases_id) [PK]
+    entity "購入" as orders {
+        + 購入ID    (orders_id) [PK]
         --
           ユーザーID (user_id) [PK]
           商品ID    (item_id) [PK]
     }
 
     users ||..o{ items
-    users ||..o{ purchases
-    items ||..|| purchases
-    addresses ||..|| purchases
+    users ||..o{ orders
+    items ||..|| orders
+    addresses ||..|| orders
 }
 
 
