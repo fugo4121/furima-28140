@@ -59,3 +59,5 @@ group :production do
 end
 
 gem 'devise'
+# オリジナル追加 エラーメッセージを日本語で表示
+gem 'rails-i18n'
