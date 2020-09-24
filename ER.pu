@@ -9,10 +9,10 @@ package "MySQL" as target_system <<Database>> {
         ニックネーム (nickname)
         Eメール     (e_mail)
         パスワード  (password)
-        名前       (first_name)
-        苗字       (family_name)
-        名前カナ    (first_name_kana)
-        苗字カナ    (family_name_kana)
+        苗字       (first_name)
+        名前       (last_name)
+        苗字カナ    (first_name_kana)
+        名前カナ    (last_name_kana)
         生年月日    (birthday)
        }
 
