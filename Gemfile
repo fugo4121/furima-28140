@@ -31,6 +31,11 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'faker'
+  
 end
 
 group :development do
@@ -61,3 +66,6 @@ end
 gem 'devise'
 # オリジナル追加 エラーメッセージを日本語で表示
 gem 'rails-i18n'
+
+# ダミーデータを日本語で作成
+gem 'gimei'
