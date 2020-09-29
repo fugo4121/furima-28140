@@ -64,6 +64,8 @@ group :production do
 end
 
 gem 'devise'
+gem 'active_hash'
+
 # オリジナル追加 エラーメッセージを日本語で表示
 gem 'rails-i18n'
 
