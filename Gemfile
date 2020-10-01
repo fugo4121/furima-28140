@@ -65,6 +65,8 @@ end
 
 gem 'devise'
 gem 'active_hash'
+gem 'mini_magick'
+gem 'image_processing', '~> 1.2'
 
 # オリジナル追加 エラーメッセージを日本語で表示
 gem 'rails-i18n'
