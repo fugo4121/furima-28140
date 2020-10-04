@@ -19,10 +19,4 @@ class Item < ApplicationRecord
     validates :sending_day_id
   end
 
-  extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to_active_hash :category
-  belongs_to_active_hash :condition
-  belongs_to_active_hash :sending_cost
-  belongs_to_active_hash :sending_prefecture
-  belongs_to_active_hash :sending_day
 end
