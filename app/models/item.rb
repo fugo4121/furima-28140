@@ -25,5 +25,4 @@ class Item < ApplicationRecord
   belongs_to_active_hash :sending_cost
   belongs_to_active_hash :sending_prefecture
   belongs_to_active_hash :sending_day
-  
 end
