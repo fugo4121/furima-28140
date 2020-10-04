@@ -26,7 +26,7 @@ ja:
         condition_id: "商品の状態"
         sending_cost_id: "配送料の負担"
         sending_prefecture_id: "発送元の地域"
-        sending_days_id: "発送までの日数"
+        sending_day_id: "発送までの日数"
   date:
     abbr_day_names:
     - 日

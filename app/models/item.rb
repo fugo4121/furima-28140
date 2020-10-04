@@ -16,6 +16,6 @@ class Item < ApplicationRecord
     validates :condition_id
     validates :sending_cost_id
     validates :sending_prefecture_id
-    validates :sending_days_id
+    validates :sending_day_id
   end
 end
