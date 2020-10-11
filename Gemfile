@@ -73,3 +73,6 @@ gem 'rails-i18n'
 
 # ダミーデータを日本語で作成
 gem 'gimei'
+
+# デバッグ用
+gem 'pry-rails'
