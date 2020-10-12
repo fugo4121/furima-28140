@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new]
   before_action :set_item, only: [:show, :edit, :update]
+  before_action :set_orders, only: [:show, :index]
 
   def index
     @items = Item.includes(:user).order('created_at DESC')
@@ -46,4 +47,9 @@ class ItemsController < ApplicationController
   def set_item
     @item = Item.find(params[:id])
   end
+
+  def set_orders
+    @orders = Order.all
+  end
+
 end
