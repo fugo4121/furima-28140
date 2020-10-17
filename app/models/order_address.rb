@@ -2,11 +2,12 @@ class OrderAddress
   include ActiveModel::Model
   
   # orderコントローラーから引き継ぐ全てのカラム
-  attr_accessor :item_id, :user_id, :postal_code, :prefecture_id, :city, :house_number, :building_name, :phone_number
+  attr_accessor :item_id, :user_id, :postal_code, :prefecture_id, :city, :house_number, :building_name, :phone_number, :token, :price
   
   VALID_PASSWORD_REGEX1 = /\A\d{3}[-]\d{4}\z/.freeze
   VALID_PASSWORD_REGEX2 = /\A[0-9]{1,11}\z/.freeze
 
+  validates :token, presence: { message: "を正しく入力してください"}
   with_options presence: true do
     validates :city
     validates :house_number

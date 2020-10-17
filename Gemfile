@@ -76,3 +76,6 @@ gem 'gimei'
 
 # デバッグ用
 gem 'pry-rails'
+
+# payjp
+gem 'payjp'

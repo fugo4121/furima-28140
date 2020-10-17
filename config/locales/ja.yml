@@ -36,6 +36,7 @@ ja:
         house_number: "番地"
         building_name: "建物名"
         phone_number: "電話番号"
+        token: "クレジットカード情報"
   date:
     abbr_day_names:
     - 日
