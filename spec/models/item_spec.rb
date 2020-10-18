@@ -56,7 +56,7 @@ RSpec.describe Item, type: :model do
       end
 
       it '発送までの日数が未選択だと登録できない' do
-        @item.sending_days_id = 1
+        @item.sending_day_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('発送までの日数を選択してください')
       end
