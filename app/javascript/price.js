@@ -7,7 +7,6 @@ function price() {
     profit.innerHTML = Prise.value - Tax.innerHTML
 
   };
-
 }
 window.addEventListener("load", price);
 
