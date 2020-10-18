@@ -1,8 +1,8 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:index]
+  before_action :set_item, only: [:index, :create]
 
   def index
-    @item = Item.find(params[:item_id])
     @order_address = OrderAddress.new
     @order = Order.all
     # 出品者、または 購入済み商品ページに飛んだ時
@@ -10,7 +10,6 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @item = Item.find(params[:item_id])
     @order_address = OrderAddress.new(order_params)
 
     if @order_address.valid?
@@ -36,4 +35,9 @@ class OrdersController < ApplicationController
       currency: 'jpy'
     )
   end
+
+  def set_item
+    @item = Item.find(params[:item_id])
+  end
+
 end

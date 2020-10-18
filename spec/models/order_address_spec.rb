@@ -33,15 +33,18 @@ RSpec.describe OrderAddress, type: :model do
         expect(@order_address.errors.full_messages).to include('郵便番号はxxx-xxxx(ハイフンあり)で入力してください')
       end
 
-      it '郵便番号が決められた形で入力しないと保存できないこと' do
+      it '郵便番号がハイフンを4桁目に入力しないと保存できないこと1' do
         @order_address.postal_code = '0000-000'
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include('郵便番号はxxx-xxxx(ハイフンあり)で入力してください')
-
+      end
+      it '郵便番号がハイフンありで入力しないと保存できないこと' do
         @order_address.postal_code = '0000000'
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include('郵便番号はxxx-xxxx(ハイフンあり)で入力してください')
+      end
 
+      it '郵便番号が数値でで入力しないと保存できないこと' do
         @order_address.postal_code = 'AAA-AAAA'
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include('郵便番号はxxx-xxxx(ハイフンあり)で入力してください')
@@ -71,15 +74,18 @@ RSpec.describe OrderAddress, type: :model do
         expect(@order_address.errors.full_messages).to include('電話番号は11桁以内のハイフンなしで入力してください')
       end
 
-      it '電話番号が11桁以内のハイフンなしでないと保存できないこと' do
+      it '電話番号が11桁以内でないと保存できないこと' do
         @order_address.phone_number = '000000000000'
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include('電話番号は11桁以内のハイフンなしで入力してください')
+      end
 
+      it '電話番号がハイフンなしでないと保存できないこと' do
         @order_address.phone_number = '00-0000-000'
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include('電話番号は11桁以内のハイフンなしで入力してください')
       end
+      
     end
   end
 end
