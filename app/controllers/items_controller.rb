@@ -51,5 +51,4 @@ class ItemsController < ApplicationController
   def set_orders
     @orders = Order.all
   end
-
 end

@@ -6,9 +6,7 @@ class OrdersController < ApplicationController
     @order_address = OrderAddress.new
     @order = Order.all
     # 出品者、または 購入済み商品ページに飛んだ時
-    if @item.user_id == current_user.id || @order.exists?(item_id: @item.id)
-      redirect_to root_url
-    end
+    redirect_to root_url if @item.user_id == current_user.id || @order.exists?(item_id: @item.id)
   end
 
   def create
@@ -31,12 +29,11 @@ class OrdersController < ApplicationController
   end
 
   def pay_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
       amount: order_params[:price],
       card: order_params[:token],
-      currency:'jpy'
+      currency: 'jpy'
     )
   end
-
 end
